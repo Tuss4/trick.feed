@@ -1,10 +1,10 @@
 # Django settings for trickfeed project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Tuss4', 'tuss4dbfn@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -120,7 +120,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'trickfeed',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -155,3 +154,11 @@ LOGGING = {
         },
     }
 }
+
+# Any settings for local development
+# that override production are set here.
+
+try:
+	from settings_local import *
+except:
+	print "No local settings found."
