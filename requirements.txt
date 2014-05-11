@@ -1,0 +1,17 @@
+Django==1.6.4
+GnuPGInterface==0.3.2
+apt-xapian-index==0.44
+argparse==1.2.1
+chardet==2.0.1
+command-not-found==0.2.44
+django-debug-toolbar==1.2
+django-tastypie==0.11.0
+language-selector==0.1
+python-apt==0.8.3ubuntu7
+python-dateutil==2.2
+python-debian==0.1.21ubuntu1
+python-mimeparse==0.1.4
+six==1.6.1
+sqlparse==0.1.11
+ufw==0.31.1-1
+wsgiref==0.1.2
