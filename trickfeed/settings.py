@@ -160,6 +160,6 @@ LOGGING = {
 # that override production are set here.
 
 try:
-	from settings_local import *
+    from settings_local import *
 except:
-	print "No local settings found."
+    print "No local settings found."
