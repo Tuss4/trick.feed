@@ -19,6 +19,6 @@ try:
     data = data_request(REQUEST_URL, 'tricking')
     data_dict = json.loads(data)
     pprint.pprint(data_dict['items'])
-    
+
 except:
-    print 'NO SETTINGS LOCAL'
+    print 'KEY NOT FOUND.'
