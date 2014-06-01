@@ -18,4 +18,4 @@ class Video(models.Model):
     author_id = models.CharField(max_length=100)
 
     def __unicode__(self):
-        return "%s - %s".format(self.title, self.youtube_url)
+        return "%s - %s".format(self.title, self.youtube_id)

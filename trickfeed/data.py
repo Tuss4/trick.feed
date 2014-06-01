@@ -3,10 +3,7 @@ import urllib2
 import pprint
 
 try:
-    from settings_local import YT_API_KEY
-    API_KEY = YT_API_KEY
-    BASE_URL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&order=date&maxResults=10'
-    REQUEST_URL = BASE_URL + '&key='+ API_KEY
+    from settings_local import REQUEST_URL
 
     def data_request(request_url, query):
         URL = request_url + '&q=' + query

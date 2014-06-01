@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'trickfeed',
+    'tastypie',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -155,6 +156,10 @@ LOGGING = {
         },
     }
 }
+
+# Tastypie Settings
+
+TASTYPIE_DEFAULT_FORMATS = ['json']
 
 # Any settings for local development
 # that override production are set here.
