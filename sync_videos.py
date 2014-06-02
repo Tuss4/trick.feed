@@ -32,6 +32,7 @@ for video in yt_api_vids:
         new_video.youtube_id = video['id']['videoId']
         new_video.author = video['snippet']['channelTitle']
         new_video.author_id = video['snippet']['channelId']
+        new_video.thumbnail = video['snippet']['thumbnails']['medium']['url']
         new_video.save()
         print '{} has been added to the trick.feed database!'.format(new_video.title.encode('utf-8'))
 

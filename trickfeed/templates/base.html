@@ -3,7 +3,7 @@
 	<head lang="en">
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Welcome to Trick.Feed</title>
+		<title>Trick.Feed{% block title %}{% endblock %}</title>
 
 		<script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}bootstrap/bootstrap.min.js"></script>
@@ -14,5 +14,8 @@
 			{% block content %}
 			{% endblock %}
 		</div>
+		<!-- load up any additional javascript resources -->
+		{% block bodyend %}
+		{% endblock %}
 	</body>
 </html>

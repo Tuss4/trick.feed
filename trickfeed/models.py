@@ -17,6 +17,8 @@ class Video(models.Model):
     author = models.CharField(max_length=50)
     author_id = models.CharField(max_length=100)
     added = models.DateTimeField(auto_now=False, auto_now_add=True)
+    thumbnail = models.CharField(max_length=100)
+
 
     def __unicode__(self):
         return "%s - %s" % (self.title, self.youtube_id)
