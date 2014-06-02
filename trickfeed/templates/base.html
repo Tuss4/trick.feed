@@ -8,8 +8,23 @@
 		<script type="text/javascript" src="{{ STATIC_URL }}jquery/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}bootstrap/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}trickfeedv1.css">
 	</head>
 	<body>
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="trickfeed-navbar-collapse">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">trick.<span id='second-half-brand'>feed</span></a>
+				</div>
+				<div class="collapse navbar-collapse" id='trickfeed-navbar-collapse'></div>
+			</div>
+		</nav>
 		<div class="container">
 			{% block content %}
 			{% endblock %}
