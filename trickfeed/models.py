@@ -19,7 +19,6 @@ class Video(models.Model):
     added = models.DateTimeField(auto_now=False, auto_now_add=True)
     thumbnail = models.CharField(max_length=100)
 
-
     def __unicode__(self):
         return "%s - %s" % (self.title, self.youtube_id)
 

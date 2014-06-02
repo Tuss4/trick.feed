@@ -2,6 +2,7 @@ import json
 import urllib2
 import pprint
 
+
 def data_request(request_url, query):
     URL = request_url + '&q=' + query
     # print URL
@@ -12,7 +13,6 @@ def data_request(request_url, query):
 
 try:
     from settings_local import REQUEST_URL
-
 
     data = data_request(REQUEST_URL, 'tricking')
     data_dict = json.loads(data)

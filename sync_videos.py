@@ -1,6 +1,5 @@
 import os
 import json
-import urllib2
 import pprint
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "trickfeed.settings")
@@ -22,7 +21,8 @@ for video in yt_api_vids:
         # Check to see if the video is already in the
         # trickfeed database.
         db_video = Video.objects.get(youtube_id=video['id']['videoId'])
-        print '{} is already on trick.feed.'.format(db_video.title.encode('utf-8'))
+        print '{} is already on trick.feed.'.\
+              format(db_video.title.encode('utf-8'))
     except Video.DoesNotExist:
         # If the video does not exist
         # add it to the database.
@@ -34,6 +34,7 @@ for video in yt_api_vids:
         new_video.author_id = video['snippet']['channelId']
         new_video.thumbnail = video['snippet']['thumbnails']['medium']['url']
         new_video.save()
-        print '{} has been added to the trick.feed database!'.format(new_video.title.encode('utf-8'))
+        print '{} has been added to the trick.feed database!'.\
+              format(new_video.title.encode('utf-8'))
 
 print 'Sync complete.'
