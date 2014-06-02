@@ -7,7 +7,7 @@ from .models import Video
 def home(request):
     return render(request,
                   'home.html',
-                  dict(),
+                  dict(videos=Video.objects.all()),
                   context_instance=RequestContext(request))
 
 

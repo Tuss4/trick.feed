@@ -1,4 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-<p>Booyah Kasha</p>
+<table class="table table-striped">
+{% for video in videos %}
+<tr>
+	<td>
+		<a href="{{ video.get_absolute_url }}">
+			<img src="{{ video.thumbnail }}" alt="{{ video.title }}" title="{{ video.title }}" />
+		</a>
+	</td>
+	<td>
+		<h3>{{ video.title }}</h3>
+		{{ video.description }}
+	</td>
+</tr>
+{% endfor %}
+</table>
 {% endblock %}
