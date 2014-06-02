@@ -10,6 +10,10 @@ class VideoResource(ModelResource):
         resource_name = 'video'
         authorization = Authorization()
 
+    def dehydrate(self, bundle):
+        bundle.data['youtube_url'] = bundle.obj.youtube_url()
+        return bundle
+
 
 class TrickerResource(ModelResource):
     favorites = fields.ToManyField('trickfeed.api.VideoResource', 'favorites',
