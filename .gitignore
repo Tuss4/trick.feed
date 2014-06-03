@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 settings_local.py
+settings_production.py
 # C extensions
 *.so
 

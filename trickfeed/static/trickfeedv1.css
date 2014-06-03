@@ -2,6 +2,11 @@ body {
     padding-top: 70px;
 }
 
+iframe {
+    border-width: 0px;
+    max-width: 100%;
+}
+
 #second-half-brand {
     color: #0099CC;
 }

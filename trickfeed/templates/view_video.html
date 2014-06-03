@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block title %} - Viewing: {{ video.title }}{% endblock %}
 {% block content %}
-<iframe id="player" type="text/html" width="720" height="480" src="{{ video.youtube_url }}"></iframe>
+<div class="row">
+	<div class="col-xs-3"></div>
+	<div class="col-md-12 col-xs-6">
+		<iframe id="player" type="text/html" width="720" height="480" src="{{ video.youtube_url }}"></iframe>
+	</div>
+	<div class="col-xs-3"></div>
+</div>
 {% endblock %}
