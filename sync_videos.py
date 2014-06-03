@@ -10,7 +10,8 @@ from trickfeed.settings_local import REQUEST_URL
 from trickfeed.data import data_request
 
 
-yt_api_json = data_request(REQUEST_URL, 'tricking%7cmartial%20arts%20tricking')
+yt_api_json = data_request(REQUEST_URL,
+                           'tricking%7cmartial%20arts%20tricking')
 yt_api_dict = json.loads(yt_api_json)
 yt_api_vids = yt_api_dict['items']
 
