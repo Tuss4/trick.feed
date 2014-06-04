@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-from .models import Video
-from .forms import LoginForm
+from .models import (Video, Tricker)
+from .forms import (LoginForm, RegistrationForm)
 
 
 def home(request):
@@ -47,3 +48,27 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+
+def registration_view(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            email = form.cleaned_data['email']
+            new_user = User()
+            new_user.username = username
+            new_user.password = password
+            new_user.email = email
+            new_user.set_password(password)
+            new_user.save()
+            new_tricker = Tricker()
+            new_tricker.user = new_user
+            new_tricker.save()
+            return HttpResponseRedirect('/login/')
+    else:
+        form = RegistrationForm()
+    return render(request, 'register.html',
+                  dict(form=form),
+                  context_instance=RequestContext(request))
