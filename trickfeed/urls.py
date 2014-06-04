@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
-from .views import (home, view_video)
+from .views import (home, view_video,
+                    login_view, logout_view)
 from tastypie.api import Api
 from .api import (TrickerResource, VideoResource)
 
@@ -17,6 +18,8 @@ urlpatterns = patterns('',
     url(r'^video/(?P<video_id>\d+)/$', view_video),
     # API Urls
     url(r'^api/', include(v1_api.urls)),
-
+    # Login and logout
+    url(r'^login/', login_view),
+    url(r'^logout/$', logout_view),
     url(r'^admin/', include(admin.site.urls)),
 )

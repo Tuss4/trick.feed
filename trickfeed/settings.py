@@ -162,6 +162,11 @@ LOGGING = {
         },
     }
 }
+# Login and Logout URL
+
+LOGIN_URL = '/login/'
+
+LOGOUT_URL = '/logout/'
 
 # Tastypie Settings
 API_LIMIT_PER_PAGE = 0
