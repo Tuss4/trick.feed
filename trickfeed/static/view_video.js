@@ -1,21 +1,19 @@
-var TheatreApp = function(vid_id) {
+var TheatreApp = function(player) {
+	var video = player;
     $(document).ready(function() {
-
         // Event handlers
         var tButton = $('.theatre-mode');
         var vOver = $('.video-overlay');
         tButton.click(function() {
             vOver.show();
-	        console.log(player);
-            function onPlayerReady(event) {
-            	event.target.playVideo();
-            };
+	        video.playVideo();
         $(document).keydown(function(event){
         	if(event.keyCode == 27){
         		vOver.hide();
+        		video.pauseVideo();
         	}
         });
             
         });
     }); 
-}; 
+};
