@@ -1,27 +1,20 @@
 var TheatreApp = function(vid_id) {
     $(document).ready(function() {
+
+        // Event handlers
         var tButton = $('.theatre-mode');
         var vOver = $('.video-overlay');
         tButton.click(function() {
             vOver.show();
-            alert(vid_id);
-            var player;
-            function onYouTubeIframeAPIReady() {
-            	player = new YT.Player('player', {
-            		height: '480',
-            		width: '720',
-            		videoId: vid_id,
-            		events: {
-            			'onReady': onPlayerReady,
-            			'onStateChange': onPlayerStateChange
-            		}
-            	});
-            };
-
+	        console.log(player);
             function onPlayerReady(event) {
             	event.target.playVideo();
             };
-
+        $(document).keydown(function(event){
+        	if(event.keyCode == 27){
+        		vOver.hide();
+        	}
+        });
             
         });
     }); 

@@ -5,25 +5,38 @@
 	<div class="row">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-			<div id="player"></div>
+			<div id="o-player"></div>
 		</div>
 		<div class="col-md-3"></div>
 	</div>
 </div>
 <div class="row">
+	<h2>{{ video.title }}</h2>
 	<div class="col-xs-3"></div>
 	<div class="col-md-12 col-xs-6">
-		<iframe id="player" type="text/html" width="720" height="480" src="{{ video.youtube_url }}"></iframe>
+		<iframe id="player" type="text/html" width="640" height="390" src="{{ video.youtube_url }}"></iframe>
 		<p><button class="theatre-mode"><span class="glyphicon glyphicon-film"></span>&nbsp; Theatre Mode</button></p>
 	</div>
 	<div class="col-xs-3"></div>
 </div>
 {% endblock %}
 {% block bodyend %}
-<script type="text/javascript" src="https://youtube.com/iframe_api"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}view_video.js"></script>
 <script type="text/javascript">
 	var vid_id = "{{ video.youtube_id }}";
+	var player;
+	function onYouTubeIframeAPIReady() {
+		player = new YT.Player('o-player', {
+			height: '480',
+			width: '720',
+			videoId: vid_id,
+			// events: {
+			// 	'onReady': onPlayerReady,
+			// 	'onStateChange': onPlayerStateChange
+			// }
+		});
+	};
 	TheatreApp(vid_id);
 </script>
+<script type="text/javascript" src="https://youtube.com/iframe_api"></script>
 {% endblock %}
