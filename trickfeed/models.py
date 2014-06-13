@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -47,7 +49,11 @@ class Video(models.Model):
     # was added within the past 24 hours. Should
     # return true or false.
     def is_this_new(self):
-        pass
+        time_difference = datetime.datetime.now() - self.added
+        if time_difference.seconds <= 86400:
+            return True
+        else:
+            return False
 
     class Meta:
         ordering = ['-added']
