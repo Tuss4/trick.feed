@@ -9,7 +9,7 @@
 		</a>
 	</td>
 	<td>
-		<h3>{{ video.title }}</h3>
+		<h3>{{ video.title }}{% if video.is_this_new %}&nbsp;<small><span class="video-new">NEW</span></small>{% endif %}</h3>
 		{{ video.description }}
 	</td>
 </tr>
