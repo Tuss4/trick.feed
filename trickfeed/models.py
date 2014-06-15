@@ -1,7 +1,8 @@
-import datetime
+from datetime import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import utc
 
 
 class Tricker(models.Model):
@@ -49,14 +50,11 @@ class Video(models.Model):
     # was added within the past 24 hours. Should
     # return true or false.
     def is_this_new(self):
-        time_offset = datetime.datetime.now().hour - \
-                      datetime.datetime.utcnow().hour
-        # time_difference = datetime.datetime.now() - self.added
-        # if time_difference.seconds <= 86400:
-        #     return True
-        # else:
-        #     return False
-        return time_offset
+        time_offset = datetime.utcnow().replace(tzinfo=utc) - self.added
+        if time_offset.days < 1:
+            return True
+        else:
+            return False
 
     class Meta:
         ordering = ['-added']
