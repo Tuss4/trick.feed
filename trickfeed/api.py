@@ -17,7 +17,7 @@ class VideoResource(ModelResource):
 
 class TrickerResource(ModelResource):
     favorites = fields.ToManyField('trickfeed.api.VideoResource', 'favorites',
-                                   null=True, full=True)
+                                   null=True)
 
     class Meta:
         queryset = Tricker.objects.all()

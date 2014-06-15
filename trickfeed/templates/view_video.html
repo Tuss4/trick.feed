@@ -17,8 +17,8 @@
 		<iframe id="player" type="text/html" width="640" height="390" src="{{ video.youtube_url }}"></iframe>
 		<p><button class="theatre-mode"><span class="glyphicon glyphicon-film"></span>&nbsp; Theatre Mode</button> 
 		{% if request.user.is_authenticated %}
-		{% if video in request.user.tricker.favorites %}
-		&nbsp; <button class="button-remove-from-faves"><span class="glyphicon glyphicon-remove"></span>&nbsp;Remove from Favorites</button>
+		{% if video in request.user.tricker.favorites.all %}
+		&nbsp; <button class="button-remove-from-favs"><span class="glyphicon glyphicon-remove"></span>&nbsp;Remove from Favorites</button>
 		{% else %}
 		&nbsp; <button class="button-add-to-favs"><span class="glyphicon glyphicon-heart"></span>&nbsp; Save to Favorites</button>
 		{% endif %}
@@ -32,6 +32,7 @@
 {% block bodyend %}
 <script type="text/javascript" src="{{ STATIC_URL }}view_video.js"></script>
 <script type="text/javascript">
+	// console.log({{video_json|safe}});
 	var vid_id = "{{ video.youtube_id }}";
 	var player;
 	function onYouTubeIframeAPIReady() {
@@ -42,6 +43,10 @@
 		});
 		TheatreApp(player);
 	};
+	{% if request.user.is_authenticated %}
+		var user = "{{ request.user.tricker.resource_uri }}";
+		var video = "{{ video.resource_uri }}";
+	{% endif %}
 </script>
 <script type="text/javascript" src="https://youtube.com/iframe_api"></script>
 {% endblock %}

@@ -1,3 +1,4 @@
+//Theatre application controls
 var TheatreApp = function(player) {
 	var video = player;
     $(document).ready(function() {
@@ -16,4 +17,12 @@ var TheatreApp = function(player) {
             
         });
     }); 
+};
+
+//User favorites controls
+//Avoid hardcoding any attributes
+var FavoriteApp = function(user, video) {
+	var addButton = $('.button-add-to-favs');
+	var removeButton = $('.button-remove-from-favs');
+	var flagButton = $('.button-not-tricking');
 };

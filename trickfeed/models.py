@@ -18,6 +18,12 @@ class Tricker(models.Model):
     def __unicode__(self):
         return self.user.username
 
+    # Return the tricker's api resource
+    def resource_uri(self):
+        from .api import TrickerResource
+        obj = self
+        return TrickerResource().get_resource_uri(obj)
+
 
 class Video(models.Model):
     '''The video class. Represents the data
@@ -58,3 +64,9 @@ class Video(models.Model):
 
     class Meta:
         ordering = ['-added']
+
+    # Return the tricker's api resource
+    def resource_uri(self):
+        from .api import VideoResource
+        obj = self
+        return VideoResource().get_resource_uri(obj)
