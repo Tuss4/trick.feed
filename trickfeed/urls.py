@@ -3,7 +3,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from .views import (home, view_video,
                     login_view, logout_view,
-                    registration_view,)
+                    registration_view,
+                    list_favorites,)
 from tastypie.api import Api
 from .api import (TrickerResource, VideoResource)
 
@@ -27,4 +28,6 @@ urlpatterns = patterns('',
     url(r'^captcha/', include('captcha.urls')),
     # Admin URL
     url(r'^admin/', include(admin.site.urls)),
+    # Member URLs
+    url(r'^favorites/$', list_favorites),
 )

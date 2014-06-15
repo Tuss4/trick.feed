@@ -26,6 +26,7 @@
 						<li{% if request.path == '/register/' %} class="active"{% endif %}><a href="/register">Register</a></li>
 						<li{% if request.path == '/login/' %} class="active" {% endif %}><a href="/login/">Login</a></li>
 						{% else %}
+						<li{% if request.path == '/favorites/' %} class="active"{% endif %}><a href="/favorites/">My Favorites</a></li>
 						<li><a href="/logout/">Logout</a></li>
 						{% endif %}
 					</ul>

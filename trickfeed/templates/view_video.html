@@ -15,7 +15,16 @@
 	<div class="col-xs-3"></div>
 	<div class="col-md-12 col-xs-6">
 		<iframe id="player" type="text/html" width="640" height="390" src="{{ video.youtube_url }}"></iframe>
-		<p><button class="theatre-mode"><span class="glyphicon glyphicon-film"></span>&nbsp; Theatre Mode</button> &nbsp; <button class="add-to-favs"><span class="glyphicon glyphicon-heart"></span>&nbsp; Save to Favorites</button> &nbsp; <button><span class="glyphicon glyphicon-flag"></span>&nbsp; Not tricking?</button></p>
+		<p><button class="theatre-mode"><span class="glyphicon glyphicon-film"></span>&nbsp; Theatre Mode</button> 
+		{% if request.user.is_authenticated %}
+		{% if video in request.user.tricker.favorites %}
+		&nbsp; <button class="button-remove-from-faves"><span class="glyphicon glyphicon-remove"></span>&nbsp;Remove from Favorites</button>
+		{% else %}
+		&nbsp; <button class="button-add-to-favs"><span class="glyphicon glyphicon-heart"></span>&nbsp; Save to Favorites</button>
+		{% endif %}
+		&nbsp; <button class="button-not-tricking"><span class="glyphicon glyphicon-flag"></span>&nbsp; Not tricking?</button>
+		{% endif %}
+		</p>
 	</div>
 	<div class="col-xs-3"></div>
 </div>

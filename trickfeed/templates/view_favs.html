@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} - Your Favorites{% endblock %}
+{% block content %}
+<div class="row">
+	{% if favorites.count == 0%}
+		<div class="well">
+			<p>YOU DON'T HAVE ANY FAVORITES, FRIEND! WHAT GIVES?? <a href="/">TIME TO BROWSE, HOMIE!</a></p>
+		</div>
+	{% else %}
+		<table class="table table-striped">
+			{% for fav in favorites %}
+			<tr>
+				<td>
+					<a href="{{ fav.get_absolute_url }}"><img src="{{ fav.thumbnail }}" alt="{{ fav.title }}" title="{{ fav.title }}" class="img-responsive"></a>
+				</td>
+				<td>
+					<h3>{{ fav.title }}</h3>
+					{{ fav.description }}
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+	{% endif %}
+</div>
+{% endblock %}

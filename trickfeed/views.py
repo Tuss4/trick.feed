@@ -3,10 +3,12 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from .models import (Video, Tricker)
 from .forms import (LoginForm, RegistrationForm)
 
 
+# Home page view.
 def home(request):
     return render(request,
                   'home.html',
@@ -14,6 +16,7 @@ def home(request):
                   context_instance=RequestContext(request))
 
 
+# Single page view for a video.
 def view_video(request, video_id):
     video = get_object_or_404(Video, pk=video_id)
     return render(request,
@@ -22,6 +25,17 @@ def view_video(request, video_id):
                   context_instance=RequestContext(request))
 
 
+# Display an authenticated user's favorites.
+@login_required
+def list_favorites(request):
+    favorites = request.user.tricker.favorites.all()
+    return render(request,
+                  'view_favs.html',
+                  dict(favorites=favorites),
+                  context_instance=RequestContext(request))
+
+
+# Custom login view.
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -45,11 +59,13 @@ def login_view(request):
                   context_instance=RequestContext(request))
 
 
+# Custom logout view.
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
 
+# Custom registration view.
 def registration_view(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
