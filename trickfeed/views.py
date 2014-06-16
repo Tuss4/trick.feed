@@ -48,6 +48,15 @@ def crud_video(request, video_id):
             except Video.DoesNotExist:
                 return HttpResponse("Error, video does not exist",
                                     content_type="application/json")
+        if request.method == "DELETE":
+            try:
+                video = Video.objects.get(pk=video_id)
+                request.user.tricker.favorites.remove(video)
+                return HttpResponse("Success",
+                                    content_type="application/json")
+            except Video.DoesNotExist:
+                return HttpResponse("Error, video does not exist",
+                                    content_type="application/json")
 
 
 # Display an authenticated user's favorites.

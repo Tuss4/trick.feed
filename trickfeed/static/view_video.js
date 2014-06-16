@@ -46,4 +46,19 @@ var FavoriteApp = function(user, video, v_array) {
 			}
 		});
 	});
+
+	removeButton.click(function() {
+		$.ajax({
+			url: user_uri,
+			dataType: "json",
+			contentType: "application/json",
+			type: "Delete",
+			success: function(){
+				alert("Biscuits and gravy!");
+			},
+			error: function(response) {
+				console.log(response.responseText);
+			}
+		});
+	});
 };
