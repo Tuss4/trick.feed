@@ -4,7 +4,8 @@ from django.contrib import admin
 from .views import (home, view_video,
                     login_view, logout_view,
                     registration_view,
-                    list_favorites,)
+                    list_favorites,
+                    crud_video,)
 from tastypie.api import Api
 from .api import (TrickerResource, VideoResource)
 
@@ -30,4 +31,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     # Member URLs
     url(r'^favorites/$', list_favorites),
+    url(r'^crud_video/(?P<video_id>\d+)/', crud_video)
 )

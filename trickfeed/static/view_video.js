@@ -35,7 +35,6 @@ var FavoriteApp = function(user, video, v_array) {
 	addButton.click(function() {
 		$.ajax({
 			url: user_uri,
-			data: {"favorites": v_array},
 			dataType: "json",
 			contentType: "application/json",
 			type: "PUT",

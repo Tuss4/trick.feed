@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from .models import (Video, Tricker)
 from .forms import (LoginForm, RegistrationForm)
 from .api import (VideoResource, TrickerResource)
@@ -30,6 +31,23 @@ def view_video(request, video_id):
                   'view_video.html',
                   dict(video=video),
                   context_instance=RequestContext(request))
+
+
+# CRUD AJAX for video
+# Temporary solution until
+# Hydrate M2M override
+@csrf_exempt
+def crud_video(request, video_id):
+    if request.is_ajax():
+        if request.method == "PUT":
+            try:
+                video = Video.objects.get(pk=video_id)
+                request.user.tricker.favorites.add(video)
+                return HttpResponse("Success",
+                                    content_type="application/json")
+            except Video.DoesNotExist:
+                return HttpResponse("Error, video does not exist",
+                                    content_type="application/json")
 
 
 # Display an authenticated user's favorites.

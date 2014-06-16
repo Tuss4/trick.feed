@@ -44,13 +44,9 @@
 		TheatreApp(player);
 	};
 	{% if request.user.is_authenticated %}
-		var user = "{{ request.user.tricker.resource_uri }}";
-		var video = "{{ video.resource_uri }}";
+		var user = "/crud_video/{{ video.id }}/";
+		var video = "{{ video.id }}";
 		var v_array = [];
-		{% for v in request.user.tricker.favorites.all %}
-		v_array.push("{{v.resource_uri}}");
-		{% endfor %}
-		console.log(v_array);
 		FavoriteApp(user, video, v_array);
 	{% endif %}
 </script>
