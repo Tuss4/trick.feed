@@ -22,7 +22,10 @@
 		{% else %}
 		&nbsp; <button class="button-add-to-favs"><span class="glyphicon glyphicon-heart"></span>&nbsp; Save to Favorites</button>
 		{% endif %}
-		&nbsp; <button class="button-not-tricking"><span class="glyphicon glyphicon-flag"></span>&nbsp; Not tricking?</button>
+		{% if video.is_tricking %}
+		&nbsp; <button class="button-not-tricking"><span class="glyphicon glyphicon-flag"></span>&nbsp; Not tricking?
+		</button>
+		{% endif %}
 		{% endif %}
 		</p>
 	</div>
