@@ -44,10 +44,14 @@
 		TheatreApp(player);
 	};
 	{% if request.user.is_authenticated %}
-		var user = "/crud_video/{{ video.id }}/";
+		var user = "{{ request.user.tricker.resource_uri }}";
 		var video = "{{ video.id }}";
+		var vid_uri = "{{ video.resource_uri }}";
 		var v_array = [];
-		FavoriteApp(user, video, v_array);
+		{% for v in request.user.tricker.favorites.all %}
+		v_array.push("{{ v.resource_uri }}");
+		{% endfor %}
+		FavoriteApp(user, video, v_array, vid_uri);
 	{% endif %}
 </script>
 <script type="text/javascript" src="https://youtube.com/iframe_api"></script>

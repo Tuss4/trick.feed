@@ -21,11 +21,12 @@ var TheatreApp = function(player) {
 
 //User favorites controls
 //Avoid hardcoding any attributes
-var FavoriteApp = function(user, video, v_array) {
+var FavoriteApp = function(user, video, v_array, vid_uri) {
 	var user_uri = user;
 	var video_uri = video;
 	var v_array = v_array;
-	v_array.push(video_uri);
+	var v_uri = vid_uri;
+	v_array.push(v_uri);
 
 	var addButton = $('.button-add-to-favs');
 	var removeButton = $('.button-remove-from-favs');
@@ -33,11 +34,13 @@ var FavoriteApp = function(user, video, v_array) {
 
 	//Events
 	addButton.click(function() {
+		var d = {"favorites": v_array}
 		$.ajax({
 			url: user_uri,
 			dataType: "json",
+			data: JSON.stringify(d),
 			contentType: "application/json",
-			type: "PUT",
+			type: "PATCH",
 			success: function(){
 				alert("Biscuits and gravy!");
 			},
@@ -60,5 +63,22 @@ var FavoriteApp = function(user, video, v_array) {
 				console.log(response.responseText);
 			}
 		});
+	});
+
+	flagButton.click(function() {
+		var d = {"is_tricking": false};
+		$.ajax({
+			url: v_uri,
+			dataType: "json",
+			data: JSON.stringify(d),
+			contentType: "application/json",
+			type: "PUT",
+			success: function(response) {
+				alert("BUGACK");
+			},
+			error: function(response) {
+				console.log(response.responseText)
+			}
+		})
 	});
 };

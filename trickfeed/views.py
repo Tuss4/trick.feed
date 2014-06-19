@@ -12,9 +12,10 @@ from .api import (VideoResource, TrickerResource)
 
 # Home page view.
 def home(request):
+    videos = Video.objects.all().exclude(is_tricking=False)
     return render(request,
                   'home.html',
-                  dict(videos=Video.objects.all()),
+                  dict(videos=videos),
                   context_instance=RequestContext(request))
 
 

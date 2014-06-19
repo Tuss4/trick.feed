@@ -1,7 +1,7 @@
 from tastypie import fields
 from tastypie.authorization import Authorization
 from tastypie.resources import ModelResource
-from models import (Tricker, Video)
+from .models import (Tricker, Video)
 
 
 class VideoResource(ModelResource):
@@ -23,3 +23,4 @@ class TrickerResource(ModelResource):
         queryset = Tricker.objects.all()
         resource_name = 'tricker'
         authorization = Authorization()
+        allowed_methods = ['get', 'put', 'post', 'patch', 'delete']
