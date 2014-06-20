@@ -51,12 +51,20 @@ var FavoriteApp = function(user, video, v_array, vid_uri) {
 	});
 
 	removeButton.click(function() {
+		var new_array = [];
+		_.each(v_array, function(vid) {
+			if(vid != v_uri) {
+				new_array.push(vid);
+			}
+		});
+		d = {"favorites": new_array};
 		$.ajax({
 			url: user_uri,
 			dataType: "json",
+			data: JSON.stringify(d),
 			contentType: "application/json",
-			type: "Delete",
-			success: function(){
+			type: "PATCH",
+			success: function(response){
 				alert("Biscuits and gravy!");
 			},
 			error: function(response) {
@@ -74,7 +82,8 @@ var FavoriteApp = function(user, video, v_array, vid_uri) {
 			contentType: "application/json",
 			type: "PUT",
 			success: function(response) {
-				alert("BUGACK");
+				alert("Video flagged!");
+				flagButton.hide();
 			},
 			error: function(response) {
 				console.log(response.responseText)
