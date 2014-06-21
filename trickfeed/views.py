@@ -10,6 +10,11 @@ from .forms import (LoginForm, RegistrationForm)
 from .api import (VideoResource, TrickerResource)
 
 
+# Context processor
+def videos_context_processor(request):
+    return {'videos': Video.objects.all().exclude(is_tricking=False)}
+
+
 # Home page view.
 def home(request):
     videos = Video.objects.all().exclude(is_tricking=False)
