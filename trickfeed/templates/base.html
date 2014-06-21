@@ -42,13 +42,13 @@
 			</div>
 		</nav>
 		<div class="container">
+			<!-- <div class="row">
+				<div class="col-md-12">
+					<h2>Total videos: {{ videos.count }}</h2>
+				</div>
+			</div> -->
 			{% block content %}
 			{% endblock %}
-			<div class="row">
-				<div class="col-md-12">
-					<p>Total videos: {{ videos.count }}</p>
-				</div>
-			</div>
 		</div>
 		<!-- load up any additional javascript resources -->
 		{# TODO: Load external scrips from cdn #}
@@ -56,6 +56,7 @@
 		<script type="text/javascript" src="{{ STATIC_URL }}bootstrap/bootstrap.min.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}underscore-min.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }}backbone-min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}typeahead.bundle.js"></script>
 		{% block bodyend %}
 		{% endblock %}
 	</body>

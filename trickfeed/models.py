@@ -70,3 +70,8 @@ class Video(models.Model):
         from .api import VideoResource
         obj = self
         return VideoResource().get_resource_uri(obj)
+
+    # Return a title index for the class
+    @classmethod
+    def title_index(cls):
+        return [t.title for t in cls.objects.all()]

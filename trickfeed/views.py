@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from .models import (Video, Tricker)
 from .forms import (LoginForm, RegistrationForm)
-from .api import (VideoResource, TrickerResource)
 
 
 # Context processor
@@ -27,12 +26,6 @@ def home(request):
 # Single page view for a video.
 def view_video(request, video_id):
     video = get_object_or_404(Video, pk=video_id)
-    # video_res = VideoResource()
-    # video_bundle = video_res.build_bundle(obj=video)
-    # video_dehydrate = video_res.full_dehydrate(video_bundle, for_list=True)
-    # video_json = video_res.serialize(None,
-    #                                  video_dehydrate,
-    #                                  "application/json")
     return render(request,
                   'view_video.html',
                   dict(video=video),

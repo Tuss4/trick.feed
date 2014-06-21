@@ -15,9 +15,9 @@ def main():
     query = raw_input('Enter your query: ')
     results = Video.objects.filter(title__icontains=query, is_tricking=True)
     if results:
-    	print {x.title: x.youtube_url() for x in results}
+        print {x.title: x.youtube_url() for x in results}
     else:
-    	print "No results found."
+        print "No results found."
     print "Coolio."
 
 if __name__ == '__main__':
