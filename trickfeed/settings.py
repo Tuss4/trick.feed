@@ -179,3 +179,7 @@ try:
     from settings_local import *
 except:
     print "No local settings found."
+    try:
+        from settings_prod import *
+    except:
+        print "No production settings found."
