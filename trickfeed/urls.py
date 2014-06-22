@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-
+from django.views.generic.base import TemplateView
 from django.contrib import admin
 from .views import (home, view_video,
                     login_view, logout_view,
@@ -33,5 +33,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     # Member URLs
     url(r'^favorites/$', list_favorites),
-    url(r'^crud_video/(?P<video_id>\d+)/', crud_video)
+    # url(r'^crud_video/(?P<video_id>\d+)/', crud_video)
+    # Robots.txt
+    url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
 )
