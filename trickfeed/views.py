@@ -36,32 +36,6 @@ def view_video(request, video_id):
                   context_instance=RequestContext(request))
 
 
-# CRUD AJAX for video
-# Temporary solution until
-# Hydrate M2M override
-@csrf_exempt
-def crud_video(request, video_id):
-    if request.is_ajax():
-        if request.method == "PUT":
-            try:
-                video = Video.objects.get(pk=video_id)
-                request.user.tricker.favorites.add(video)
-                return HttpResponse("Success",
-                                    content_type="application/json")
-            except Video.DoesNotExist:
-                return HttpResponse("Error, video does not exist",
-                                    content_type="application/json")
-        if request.method == "DELETE":
-            try:
-                video = Video.objects.get(pk=video_id)
-                request.user.tricker.favorites.remove(video)
-                return HttpResponse("Success",
-                                    content_type="application/json")
-            except Video.DoesNotExist:
-                return HttpResponse("Error, video does not exist",
-                                    content_type="application/json")
-
-
 # Display an authenticated user's favorites.
 @login_required
 def list_favorites(request):

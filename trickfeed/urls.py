@@ -5,7 +5,6 @@ from .views import (home, view_video,
                     login_view, logout_view,
                     registration_view,
                     list_favorites,
-                    crud_video,
                     search,)
 from tastypie.api import Api
 from .api import (TrickerResource, VideoResource)
