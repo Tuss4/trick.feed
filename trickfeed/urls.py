@@ -5,7 +5,8 @@ from .views import (home, view_video,
                     login_view, logout_view,
                     registration_view,
                     list_favorites,
-                    crud_video,)
+                    crud_video,
+                    search,)
 from tastypie.api import Api
 from .api import (TrickerResource, VideoResource)
 
@@ -19,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^$', home),
     # Video url
     url(r'^video/(?P<video_id>\d+)/$', view_video),
+    url(r'^search/', search),
     # API Urls
     url(r'^api/', include(v1_api.urls)),
     # Login, logout and register

@@ -125,3 +125,17 @@ def registration_view(request):
     return render(request, 'register.html',
                   dict(form=form),
                   context_instance=RequestContext(request))
+
+
+# Video search view.
+def search(request):
+    results = []
+    query_str = ''
+    if request.method == 'GET':
+        query_str = request.GET['video-search']
+        results = Video.objects.filter(title__icontains=query_str,
+                                       is_tricking=True)
+    return render(request, 'search.html',
+                  dict(results=results,
+                       query=query_str),
+                  context_instance=RequestContext(request))
