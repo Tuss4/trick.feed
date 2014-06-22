@@ -6,7 +6,14 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "trickfeed.settings")
 
 
 from trickfeed.models import Video
-from trickfeed.settings_local import REQUEST_URL
+try:
+    from trickfeed.settings_local import REQUEST_URL
+except:
+    print "No settings local"
+    try:
+        from trickfeed.settings_prod import REQUEST_URL
+    except:
+        print "No settings production"
 from trickfeed.data import data_request
 
 
