@@ -74,4 +74,4 @@ class Video(models.Model):
     # Return a title index for the class
     @classmethod
     def title_index(cls):
-        return [t.title for t in cls.objects.all()]
+        return [t.title for t in cls.objects.all().exclude(is_tricking=False)]
