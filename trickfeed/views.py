@@ -1,3 +1,6 @@
+import json
+
+
 from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
@@ -11,7 +14,8 @@ from .forms import (LoginForm, RegistrationForm)
 
 # Context processor
 def videos_context_processor(request):
-    return {'videos': Video.objects.all().exclude(is_tricking=False)}
+    return {'videos': Video.objects.all().exclude(is_tricking=False),
+            'video_titles': json.dumps(Video.title_index())}
 
 
 # Home page view.
