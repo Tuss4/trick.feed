@@ -19,7 +19,11 @@
         {% endfor %}
     </table>
     {% else %}
-    <p>Your search didn't return any results.</p>
+    {% if query %}
+    <p>Your search for {{ query }} didn't return any results.</p>
+    {% else %}
+    <p>Type in something to search for up above!</p>
+    {% endif %}
     {% endif %}
 </div>
 {% endblock %}

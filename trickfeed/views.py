@@ -132,9 +132,10 @@ def search(request):
     results = []
     query_str = ''
     if request.method == 'GET':
-        query_str = request.GET['video-search']
-        results = Video.objects.filter(title__icontains=query_str,
-                                       is_tricking=True)
+        if request.GET.get('video-search'):
+            query_str = request.GET.get('video-search')
+            results = Video.objects.filter(title__icontains=query_str,
+                                           is_tricking=True)
     return render(request, 'search.html',
                   dict(results=results,
                        query=query_str),
