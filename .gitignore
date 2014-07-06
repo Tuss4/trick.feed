@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 settings_local.py
 settings_prod.py
+.DS_Store
 # C extensions
 *.so
 
